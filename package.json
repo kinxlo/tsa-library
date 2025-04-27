@@ -113,10 +113,5 @@
     "react-hook-form": "^7.56.1",
     "tw-animate-css": "^1.2.8",
     "typescript-eslint": "^8.26.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
   }
 }
