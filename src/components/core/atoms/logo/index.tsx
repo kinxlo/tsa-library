@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import Image from "next/image";
+import Link from "next/link";
 import { FC } from "react";
 
 type LogoProperties = {
@@ -6,19 +7,17 @@ type LogoProperties = {
   width?: number;
   height?: number;
   className?: string;
-  LinkComponent: React.ComponentType<any>;
-  ImageComponent: React.ComponentType<any>;
 };
 
-const Logo: FC<LogoProperties> = ({ logo, width = 120, height = 37, className, LinkComponent, ImageComponent }) => {
+const Logo: FC<LogoProperties> = ({ logo, width = 120, height = 37, className }) => {
   return (
-    <LinkComponent href="/" data-testid="logo" className="">
+    <Link href="/" data-testid="logo" className="">
       {logo ? (
-        <ImageComponent src={logo} alt="Logo" width={width} height={height} className={className} />
+        <Image src={logo} alt="Logo" width={width} height={height} className={className} />
       ) : (
         <p className="text-xl font-bold">LOGO</p>
       )}
-    </LinkComponent>
+    </Link>
   );
 };
 
