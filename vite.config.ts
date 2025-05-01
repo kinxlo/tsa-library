@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/prefer-module */
 import path from "node:path";
 import react from "@vitejs/plugin-react";
-import tailwindcss from "tailwindcss";
+// import tailwindcss from "tailwindcss";
 import { UserConfigExport } from "vite";
 import dts from "vite-plugin-dts";
 import { defineConfig } from "vitest/config";
@@ -23,11 +23,11 @@ const app = async (): Promise<UserConfigExport> => {
         insertTypesEntry: true,
       }),
     ],
-    css: {
-      postcss: {
-        plugins: [tailwindcss],
-      },
-    },
+    // css: {
+    //   postcss: {
+    //     plugins: [tailwindcss],
+    //   },
+    // },
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),
