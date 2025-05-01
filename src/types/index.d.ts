@@ -23,7 +23,7 @@ declare global {
     | "link";
   type Size = "default" | "sm" | "lg" | "link" | "icon" | "circle";
 
-  interface TsaButtonProperties {
+  interface ButtonProperties {
     type?: "submit" | "button" | "reset";
     variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"; // Add your actual variants
     size?: "default" | "sm" | "lg" | "icon"; // Add your actual sizes
@@ -40,7 +40,7 @@ declare global {
     onClick?: MouseEventHandler<HTMLButtonElement>;
   }
 
-  interface TsaInputProperties {
+  interface InputProperties {
     label?: string;
     isRequired?: boolean;
     state?: "default" | "primary" | "error";
@@ -56,15 +56,28 @@ declare global {
     validate?: (value: string) => boolean;
   }
 
-  interface TsaNavbarProperties {
-    navLinks: NavLink[];
-    logoPath: string;
-    children?: ReactNode;
-    bgScrollColor?: string;
-    linkClassName?: string;
+  export type NavLink = {
+    id: number;
+    name: string;
+    path: string;
+    type: string;
+    subLinks?: {
+      id: number;
+      name: string;
+      path: string;
+      type: string;
+    }[];
+  };
+
+  interface NavbarProperties {
+    logo: React.ReactNode;
+    links: NavLink[];
+    cta?: React.ReactNode;
+    user?: React.ReactNode;
     className?: string;
-    showBanner?: boolean;
-    bannerDuration?: string;
+    mobileBreakpoint?: "sm" | "md" | "lg" | "xl";
+    theme?: "light" | "dark" | "custom";
+    sticky?: boolean;
   }
 
   interface slideContentProperties {
@@ -86,17 +99,17 @@ declare global {
     dropdown?: DropdownItem[];
   }
 
-  interface TsaMarqueeProps extends HtmlHTMLAttributes<HTMLDivElement> {
+  interface MarqueeProps extends HtmlHTMLAttributes<HTMLDivElement> {
     children: ReactNode;
   }
 
-  interface TsaBannerProps extends HtmlHTMLAttributes<HTMLDivElement> {
+  interface BannerProps extends HtmlHTMLAttributes<HTMLDivElement> {
     testimonials: { message: string; image: string; name: string; job: string }[];
     topSlot?: ReactNode;
     bottomSlot?: ReactNode;
   }
 
-  interface TsaCarouselProperties {
+  interface CarouselProperties {
     courseContent?: slideContentProperties[];
     galleryContent?: ReactNode[];
     facilityContent?: string[];
@@ -108,7 +121,7 @@ declare global {
     facilityCaroselFlatMaxWidth?: string;
   }
 
-  interface TsaFooterProperties extends TsaNavbarProperties, HtmlHTMLAttributes<HTMLDivElement> {
+  interface FooterProperties extends TsaNavbarProperties, HtmlHTMLAttributes<HTMLDivElement> {
     subscribeComponent: ReactNode;
   }
 

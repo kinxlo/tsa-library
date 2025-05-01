@@ -9,7 +9,7 @@ type LogoProperties = {
   className?: string;
 };
 
-const Logo: FC<LogoProperties> = ({ logo, width = 120, height = 37, className }) => {
+const Logo: FC<LogoProperties> = ({ logo = "/images/logo-black.png", width = 120, height = 37, className }) => {
   return (
     <Link href="/" data-testid="logo" className="">
       {logo ? (

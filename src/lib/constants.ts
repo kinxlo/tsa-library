@@ -10,49 +10,16 @@ export const SLIDE_CONTENT: slideContentProperties[] = [
 ];
 
 // Use the types to define the NAV_LINKS array
-export const NAV_LINKS: NavLink[] = [
-  { route: "About Us", link: "/about" },
+export const NAV_LINKS = [
   {
-    route: "Courses",
-    link: "",
-    dropdown: [
-      {
-        title: "Alert Dialog",
-        href: "/",
-        description: "A modal dialog that interrupts the user with important content and expects a response.",
-      },
-      {
-        title: "Hover Card",
-        href: "/",
-        description: "For sighted users to preview content available behind a link.",
-      },
-      {
-        title: "Progress",
-        href: "/",
-        description:
-          "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-      },
-      {
-        title: "Scroll-area",
-        href: "/",
-        description: "Visually or semantically separates content.",
-      },
-      {
-        title: "Tabs",
-        href: "/",
-        description: "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-      },
-      {
-        title: "Tooltip",
-        href: "/",
-        description:
-          "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-      },
-    ],
+    id: 3,
+    name: "Link 1",
+    path: "/explore",
+    type: "dropdown",
+    subLinks: [{ id: 1, name: "Sublink 1", path: "/sublink", type: "link" }],
   },
-  { route: "Employers", link: "/employers" },
-  { route: "FAQ", link: "/faq" },
-  { route: "Contact Us", link: "/contact" },
+  { id: 5, name: "Link 2", path: "/features", type: "link" },
+  { id: 4, name: "Link 3", path: "/pricing", type: "link" },
 ];
 
 export const IMG_PATH = [
