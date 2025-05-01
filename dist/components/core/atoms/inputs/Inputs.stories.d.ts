@@ -1,0 +1,11 @@
+import { InputField } from '.';
+import { Meta, StoryObj } from '@storybook/react';
+declare const meta: Meta<typeof InputField>;
+export default meta;
+type Story = StoryObj<typeof InputField>;
+export declare const Default: Story;
+export declare const WithValidation: Story;
+export declare const Password: Story;
+export declare const Select: Story;
+export declare const TextArea: Story;
+export declare const WithIcons: Story;

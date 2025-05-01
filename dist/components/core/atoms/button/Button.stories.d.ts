@@ -1,0 +1,12 @@
+import { CustomButton } from '.';
+import { Meta, StoryObj } from '@storybook/react';
+declare const meta: Meta<typeof CustomButton>;
+export default meta;
+type Story = StoryObj<typeof CustomButton>;
+export declare const Primary: Story;
+export declare const WithIcon: Story;
+export declare const IconOnly: Story;
+export declare const Loading: Story;
+export declare const Disabled: Story;
+export declare const LinkButton: Story;
+export declare const ExternalLink: Story;
