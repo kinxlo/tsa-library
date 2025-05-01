@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
@@ -9,7 +11,7 @@ type LogoProperties = {
   className?: string;
 };
 
-const Logo: FC<LogoProperties> = ({ logo = "/images/logo-black.png", width = 120, height = 37, className }) => {
+export const Logo: FC<LogoProperties> = ({ logo = "/images/logo-black.png", width = 120, height = 37, className }) => {
   return (
     <Link href="/" data-testid="logo" className="">
       {logo ? (
@@ -20,5 +22,3 @@ const Logo: FC<LogoProperties> = ({ logo = "/images/logo-black.png", width = 120
     </Link>
   );
 };
-
-export default Logo;

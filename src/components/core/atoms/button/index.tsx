@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { LucideLoader, LucidePlus } from "lucide-react";
 import Link from "next/link";
@@ -160,4 +162,4 @@ export const CustomButton = forwardRef<HTMLButtonElement, ButtonProperties>(
   },
 );
 
-CustomButton.displayName = "CustomButton"; // This is useful for debugging in React DevTools
+CustomButton.displayName = "CustomButton";

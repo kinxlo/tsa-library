@@ -1,5 +1,5 @@
 import * as react from 'react';
-import { ReactNode, MouseEventHandler } from 'react';
+import { ReactNode, MouseEventHandler, FC } from 'react';
 
 type Variant = "default" | "primary" | "destructive" | "subtle" | "loading" | "outline" | "secondary" | "ghost" | "link";
 type Size = "default" | "sm" | "lg" | "xl" | "link" | "icon" | "circle";
@@ -42,4 +42,12 @@ declare const CustomButton: react.ForwardRefExoticComponent<ButtonProperties & r
 
 declare function InputField({ label, name, type, placeholder, required, disabled, options, className, containerClassName, leftAddon, rightAddon, labelDetailedNode, onChange, }: FormFieldProperties): react.JSX.Element;
 
-export { type ButtonProperties, CustomButton, InputField };
+type LogoProperties = {
+    logo?: string;
+    width?: number;
+    height?: number;
+    className?: string;
+};
+declare const Logo: FC<LogoProperties>;
+
+export { type ButtonProperties, CustomButton, InputField, Logo };

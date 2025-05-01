@@ -391,8 +391,12 @@ function InputField({
 // src/components/core/atoms/logo/index.tsx
 import Image from "next/image";
 import Link2 from "next/link";
+var Logo = ({ logo = "/images/logo-black.png", width = 120, height = 37, className }) => {
+  return /* @__PURE__ */ React.createElement(Link2, { href: "/", "data-testid": "logo", className: "" }, logo ? /* @__PURE__ */ React.createElement(Image, { src: logo, alt: "Logo", width, height, className }) : /* @__PURE__ */ React.createElement("p", { className: "text-xl font-bold" }, "LOGO"));
+};
 export {
   CustomButton,
-  InputField
+  InputField,
+  Logo
 };
 //# sourceMappingURL=index.js.map
