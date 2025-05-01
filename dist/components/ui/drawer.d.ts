@@ -1,0 +1,13 @@
+import { Drawer as DrawerPrimitive } from 'vaul';
+import * as React from "react";
+declare function Drawer({ ...properties }: React.ComponentProps<typeof DrawerPrimitive.Root>): import("react/jsx-runtime").JSX.Element;
+declare function DrawerTrigger({ ...properties }: React.ComponentProps<typeof DrawerPrimitive.Trigger>): import("react/jsx-runtime").JSX.Element;
+declare function DrawerPortal({ ...properties }: React.ComponentProps<typeof DrawerPrimitive.Portal>): import("react/jsx-runtime").JSX.Element;
+declare function DrawerClose({ ...properties }: React.ComponentProps<typeof DrawerPrimitive.Close>): import("react/jsx-runtime").JSX.Element;
+declare function DrawerOverlay({ className, ...properties }: React.ComponentProps<typeof DrawerPrimitive.Overlay>): import("react/jsx-runtime").JSX.Element;
+declare function DrawerContent({ className, children, ...properties }: React.ComponentProps<typeof DrawerPrimitive.Content>): import("react/jsx-runtime").JSX.Element;
+declare function DrawerHeader({ className, ...properties }: React.ComponentProps<"div">): import("react/jsx-runtime").JSX.Element;
+declare function DrawerFooter({ className, ...properties }: React.ComponentProps<"div">): import("react/jsx-runtime").JSX.Element;
+declare function DrawerTitle({ className, ...properties }: React.ComponentProps<typeof DrawerPrimitive.Title>): import("react/jsx-runtime").JSX.Element;
+declare function DrawerDescription({ className, ...properties }: React.ComponentProps<typeof DrawerPrimitive.Description>): import("react/jsx-runtime").JSX.Element;
+export { Drawer, DrawerPortal, DrawerOverlay, DrawerTrigger, DrawerClose, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription, };

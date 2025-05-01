@@ -1,0 +1,14 @@
+import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
+import * as React from "react";
+declare function AlertDialog({ ...properties }: React.ComponentProps<typeof AlertDialogPrimitive.Root>): import("react/jsx-runtime").JSX.Element;
+declare function AlertDialogTrigger({ ...properties }: React.ComponentProps<typeof AlertDialogPrimitive.Trigger>): import("react/jsx-runtime").JSX.Element;
+declare function AlertDialogPortal({ ...properties }: React.ComponentProps<typeof AlertDialogPrimitive.Portal>): import("react/jsx-runtime").JSX.Element;
+declare function AlertDialogOverlay({ className, ...properties }: React.ComponentProps<typeof AlertDialogPrimitive.Overlay>): import("react/jsx-runtime").JSX.Element;
+declare function AlertDialogContent({ className, ...properties }: React.ComponentProps<typeof AlertDialogPrimitive.Content>): import("react/jsx-runtime").JSX.Element;
+declare function AlertDialogHeader({ className, ...properties }: React.ComponentProps<"div">): import("react/jsx-runtime").JSX.Element;
+declare function AlertDialogFooter({ className, ...properties }: React.ComponentProps<"div">): import("react/jsx-runtime").JSX.Element;
+declare function AlertDialogTitle({ className, ...properties }: React.ComponentProps<typeof AlertDialogPrimitive.Title>): import("react/jsx-runtime").JSX.Element;
+declare function AlertDialogDescription({ className, ...properties }: React.ComponentProps<typeof AlertDialogPrimitive.Description>): import("react/jsx-runtime").JSX.Element;
+declare function AlertDialogAction({ className, ...properties }: React.ComponentProps<typeof AlertDialogPrimitive.Action>): import("react/jsx-runtime").JSX.Element;
+declare function AlertDialogCancel({ className, ...properties }: React.ComponentProps<typeof AlertDialogPrimitive.Cancel>): import("react/jsx-runtime").JSX.Element;
+export { AlertDialog, AlertDialogPortal, AlertDialogOverlay, AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogTitle, AlertDialogDescription, AlertDialogAction, AlertDialogCancel, };

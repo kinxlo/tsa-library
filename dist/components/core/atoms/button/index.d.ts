@@ -1,9 +1,7 @@
-import * as react from 'react';
-import { ReactNode, MouseEventHandler, FC } from 'react';
-
+import { MouseEventHandler, ReactNode } from 'react';
 type Variant = "default" | "primary" | "destructive" | "subtle" | "loading" | "outline" | "secondary" | "ghost" | "link";
 type Size = "default" | "sm" | "lg" | "xl" | "link" | "icon" | "circle";
-interface ButtonProperties extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProperties extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     type?: "submit" | "button" | "reset";
     /** Specifies the button style variant */
     variant?: Variant;
@@ -38,16 +36,5 @@ interface ButtonProperties extends React.ButtonHTMLAttributes<HTMLButtonElement>
  * @param {ButtonProps} props - Properties to configure the button.
  * @returns {JSX.Element} The rendered button component.
  */
-declare const CustomButton: react.ForwardRefExoticComponent<ButtonProperties & react.RefAttributes<HTMLButtonElement>>;
-
-declare function InputField({ label, name, type, placeholder, required, disabled, options, className, containerClassName, leftAddon, rightAddon, labelDetailedNode, onChange, }: FormFieldProperties): react.JSX.Element;
-
-type LogoProperties = {
-    logo?: string;
-    width?: number;
-    height?: number;
-    className?: string;
-};
-declare const Logo: FC<LogoProperties>;
-
-export { type ButtonProperties, CustomButton, InputField, Logo };
+export declare const CustomButton: import('react').ForwardRefExoticComponent<ButtonProperties & import('react').RefAttributes<HTMLButtonElement>>;
+export {};
