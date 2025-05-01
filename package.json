@@ -20,7 +20,7 @@
       "import": "./dist/tsa-lib.es.js",
       "require": "./dist/tsa-lib.umd.js"
     },
-    "./style.css": "./dist/global.css"
+    "./dist/style.css": "./dist/style.css"
   },
   "files": [
     "dist"
