@@ -1,9 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/utils"; // Assuming you have a utility for classnames
+
+import { Menu, XIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+
+import { CustomButton } from "../../atoms/button";
 
 export const Navbar = ({
   logo,
@@ -47,12 +51,12 @@ export const Navbar = ({
     custom: "",
   };
 
-  const mobileMenuBreakpoint = {
-    sm: "sm:hidden",
-    md: "md:hidden",
-    lg: "lg:hidden",
-    xl: "xl:hidden",
-  };
+  // const mobileMenuBreakpoint = {
+  //   sm: "sm:hidden",
+  //   md: "md:hidden",
+  //   lg: "lg:hidden",
+  //   xl: "xl:hidden",
+  // };
 
   return (
     <nav
@@ -70,7 +74,7 @@ export const Navbar = ({
           <div className="flex-shrink-0">{logo}</div>
 
           {/* Desktop Navigation */}
-          <div className={`hidden ${mobileBreakpoint}:flex items-center space-x-4`}>
+          <div className={`hidden items-center space-x-4 lg:flex`}>
             {links.map((link) => (
               <NavItem key={link.path} link={link} isActive={isActive(link.path)} />
             ))}
@@ -79,39 +83,24 @@ export const Navbar = ({
           {/* CTA/User Area */}
           <div className="flex items-center space-x-4">
             {user ?? cta ?? (
-              <>
-                <Link
-                  href="/login"
-                  className="hidden rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 md:block"
-                >
-                  Sign in
-                </Link>
-                <Link
-                  href="/register"
-                  className="hidden rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 md:block"
-                >
+              <div className="hidden space-x-4 lg:flex">
+                <CustomButton href="/login">Sign in</CustomButton>
+                <CustomButton variant={`primary`} href="/register">
                   Sign up
-                </Link>
-              </>
+                </CustomButton>
+              </div>
             )}
 
             {/* Mobile menu button */}
-            <button
-              type="button"
-              className={`inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-100 focus:outline-none ${mobileMenuBreakpoint[mobileBreakpoint]}`}
+            <CustomButton
+              variant={`primary`}
+              size={`icon`}
+              isIconOnly
+              className={cn("lg:hidden")}
+              icon={isMobileMenuOpen ? <XIcon /> : <Menu />}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
+            />
           </div>
         </div>
       </div>
@@ -130,15 +119,10 @@ export const Navbar = ({
           ))}
           {!user && (
             <>
-              <Link href="/login" className="block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100">
-                Sign in
-              </Link>
-              <Link
-                href="/register"
-                className="block rounded-md bg-blue-600 px-3 py-2 text-base font-medium text-white hover:bg-blue-700"
-              >
+              <CustomButton href="/login">Sign in</CustomButton>
+              <CustomButton variant={`primary`} href="/register">
                 Sign up
-              </Link>
+              </CustomButton>
             </>
           )}
         </div>
@@ -152,12 +136,12 @@ const NavItem = ({ link, isActive }: { link: NavLink; isActive: boolean }) => {
   if (link.type === "dropdown" && link.subLinks) {
     return (
       <div className="group relative">
-        <button className="flex items-center space-x-1 rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100">
+        <CustomButton variant={`link`}>
           <span>{link.name}</span>
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
-        </button>
+        </CustomButton>
         <div className="ring-opacity-5 invisible absolute left-0 mt-2 w-56 origin-top-left rounded-md bg-white opacity-0 shadow-lg ring-1 ring-black transition-all duration-200 group-hover:visible group-hover:opacity-100">
           <div className="py-1">
             {link.subLinks.map((subLink) => (
@@ -176,15 +160,9 @@ const NavItem = ({ link, isActive }: { link: NavLink; isActive: boolean }) => {
   }
 
   return (
-    <Link
-      href={link.path}
-      className={cn(
-        "rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100",
-        isActive && "bg-gray-200 font-semibold",
-      )}
-    >
+    <CustomButton variant={`link`} href={link.path} className={cn(isActive && "bg-gray-200 font-semibold")}>
       {link.name}
-    </Link>
+    </CustomButton>
   );
 };
 

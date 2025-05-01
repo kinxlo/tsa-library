@@ -2,7 +2,7 @@ import { Navbar } from ".";
 import { NAV_LINKS } from "@/lib/constants";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Logo from "../../atoms/logo";
+import { Logo } from "../../atoms/logo";
 
 const meta: Meta<typeof Navbar> = {
   title: "Molecules/Navbar",

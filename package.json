@@ -1,7 +1,8 @@
 {
   "name": "@strategic-dot/tsa-lib",
   "private": false,
-  "version": "0.1.04",
+  "version": "0.1.05",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/kinxlo/strategic-dot-pkg"
@@ -26,7 +27,7 @@
   ],
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "storybook build",
+    "build-storybook": "storybook build",
     "build:lib": "tsc && vite build",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix && pnpm format",
