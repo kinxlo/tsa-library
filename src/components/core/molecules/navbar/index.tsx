@@ -41,7 +41,7 @@ export const Navbar = ({
 
   // Determine active link
   const isActive = (path: string) => {
-    return pathname === path || (path !== "/" && pathname.startsWith(path));
+    return pathname === path || (path !== "/" && pathname?.startsWith(path));
   };
 
   // Theme classes
@@ -75,9 +75,7 @@ export const Navbar = ({
 
           {/* Desktop Navigation */}
           <div className={`hidden items-center space-x-4 lg:flex`}>
-            {links.map((link) => (
-              <NavItem key={link.path} link={link} isActive={isActive(link.path)} />
-            ))}
+            {links?.map((link) => <NavItem key={link.path} link={link} isActive={isActive(link?.path)} />)}
           </div>
 
           {/* CTA/User Area */}
@@ -114,9 +112,7 @@ export const Navbar = ({
         style={{ top: sticky ? "5rem" : "4rem" }} // Adjust based on navbar height
       >
         <div className="space-y-1 px-2 pt-2 pb-3">
-          {links.map((link) => (
-            <MobileNavItem key={link.path} link={link} isActive={isActive(link.path)} />
-          ))}
+          {links?.map((link) => <MobileNavItem key={link?.path} link={link} isActive={isActive(link?.path)} />)}
           {!user && (
             <>
               <CustomButton href="/login">Sign in</CustomButton>
