@@ -1,7 +1,7 @@
 {
   "name": "@strategic-dot/tsa-lib",
   "private": false,
-  "version": "0.1.08",
+  "version": "0.1.09",
   "type": "module",
   "repository": {
     "type": "git",
@@ -19,8 +19,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/tsa-lib.es.js",
       "require": "./dist/tsa-lib.umd.js"
-    },
-    "./dist/style.css": "./dist/style.css"
+    }
   },
   "files": [
     "dist"
@@ -81,13 +80,14 @@
     "@tailwindcss/vite": "^4.1.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.503.0",
-    "tailwind-merge": "^3.2.0",
     "date-fns": "^4.1.0",
     "embla-carousel-autoplay": "^8.3.0",
     "embla-carousel-react": "^8.3.0",
+    "lucide-react": "^0.503.0",
     "react-fast-marquee": "^1.6.5",
     "recharts": "^2.13.0",
+    "@tailwindcss/postcss": "^4.1.4",
+    "tailwind-merge": "^3.2.0",
     "vaul": "^1.1.0"
   },
   "devDependencies": {
@@ -105,7 +105,6 @@
     "@storybook/nextjs": "^8.6.12",
     "@storybook/react": "^8.6.12",
     "@storybook/test": "^8.6.12",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

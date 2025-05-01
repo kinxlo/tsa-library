@@ -1,3 +1,5 @@
+import "./global.css";
+
 // ATOMS
 export * from "./components/core/atoms/button";
 export * from "./components/core/atoms/inputs";
