@@ -50,4 +50,4 @@ type LogoProperties = {
 };
 declare const Logo: FC<LogoProperties>;
 
-export { type ButtonProperties, CustomButton, InputField, Logo };
+export { CustomButton, InputField, Logo };
