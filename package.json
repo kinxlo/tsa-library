@@ -26,15 +26,15 @@
   ],
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "tsup",
+    "build": "storybook build",
+    "build:lib": "tsc && vite build",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix && pnpm format",
     "lint:strict": "eslint --max-warnings=0 src",
     "format": "prettier --write .",
     "format:check": "prettier -c -w .",
     "prepare": "husky",
-    "preview": "vite preview",
-    "build-storybook": "storybook build"
+    "preview": "vite preview"
   },
   "lint-staged": {
     "**/*.{js,jsx,tsx,ts,css,less,scss,sass}": [
@@ -81,7 +81,13 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.503.0",
-    "tailwind-merge": "^3.2.0"
+    "tailwind-merge": "^3.2.0",
+    "date-fns": "^4.1.0",
+    "embla-carousel-autoplay": "^8.3.0",
+    "embla-carousel-react": "^8.3.0",
+    "react-fast-marquee": "^1.6.5",
+    "recharts": "^2.13.0",
+    "sonner": "^1.5.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
