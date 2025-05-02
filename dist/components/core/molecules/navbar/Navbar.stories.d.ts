@@ -1,9 +1,8 @@
-import { Navbar } from '.';
-import { Meta, StoryObj } from '@storybook/react';
-declare const meta: Meta<typeof Navbar>;
+import { TsaNavbar } from '.';
+import { Meta } from '@storybook/react';
+declare const meta: Meta<typeof TsaNavbar>;
 export default meta;
-type Story = StoryObj<typeof Navbar>;
-export declare const Default: Story;
-export declare const DarkTheme: Story;
-export declare const WithUser: Story;
-export declare const WithCustomCTA: Story;
+export declare const Default: import('@storybook/core/csf').AnnotatedStoryFn<import('@storybook/react/*').ReactRenderer, TsaNavbarProperties>;
+export declare const CustomCTA: import('@storybook/core/csf').AnnotatedStoryFn<import('@storybook/react/*').ReactRenderer, TsaNavbarProperties>;
+export declare const CustomCTA_2: import('@storybook/core/csf').AnnotatedStoryFn<import('@storybook/react/*').ReactRenderer, TsaNavbarProperties>;
+export declare const CustomCTA_2_with_banner: import('@storybook/core/csf').AnnotatedStoryFn<import('@storybook/react/*').ReactRenderer, TsaNavbarProperties>;

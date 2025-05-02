@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEventHandler, FocusEventHandler, HtmlHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 
 declare global {
@@ -57,6 +58,9 @@ declare global {
   }
 
   export type NavLink = {
+    dropdown: any;
+    route: ReactNode;
+    link: string;
     id: number;
     name: string;
     path: string;
@@ -139,6 +143,17 @@ declare global {
     leftAddon?: React.ReactNode; // Add left icon or button
     rightAddon?: React.ReactNode; // Add right icon or button
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  }
+
+  interface TsaNavbarProperties {
+    navLinks: NavLink[];
+    logoPath: string;
+    children?: ReactNode;
+    bgScrollColor?: string;
+    linkClassName?: string;
+    className?: string;
+    showBanner?: boolean;
+    bannerDuration?: string;
   }
 }
 
