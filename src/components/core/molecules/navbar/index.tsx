@@ -1,13 +1,33 @@
 "use client";
 
-import { cn } from "@/lib/utils"; // Assuming you have a utility for classnames
-
-// import { Menu, XIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { CustomButton } from "../../atoms/button";
+
+type NavLink = {
+  name: string;
+  path: string;
+  type?: "link" | "dropdown";
+  subLinks?: Array<{
+    name: string;
+    path: string;
+  }>;
+};
+
+type NavbarProperties = {
+  logo: React.ReactNode;
+  links?: NavLink[];
+  cta?: React.ReactNode;
+  user?: React.ReactNode;
+  className?: string;
+  mobileBreakpoint?: "sm" | "md" | "lg" | "xl";
+  theme?: "light" | "dark" | "custom";
+  sticky?: boolean;
+};
 
 export const Navbar = ({
   logo,
@@ -15,7 +35,7 @@ export const Navbar = ({
   cta,
   user,
   className,
-  mobileBreakpoint = "lg",
+  // mobileBreakpoint = "lg",
   theme = "light",
   sticky = true,
 }: NavbarProperties) => {
@@ -23,40 +43,31 @@ export const Navbar = ({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll for sticky navbar with shadow
+  // Handle scroll for sticky navbar
   useEffect(() => {
-    if (sticky) {
-      const handleScroll = () => {
-        setIsScrolled(window.scrollY > 10);
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }
+    if (!sticky) return;
+
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [sticky]);
 
-  // Close mobile menu when route changes
+  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
-  // Determine active link
   const isActive = (path: string) => {
     return pathname === path || (path !== "/" && pathname?.startsWith(path));
   };
 
-  // Theme classes
   const themeClasses = {
     light: "bg-white text-gray-900",
     dark: "bg-gray-900 text-white",
     custom: "",
   };
 
-  // const mobileMenuBreakpoint = {
-  //   sm: "sm:hidden",
-  //   md: "md:hidden",
-  //   lg: "lg:hidden",
-  //   xl: "xl:hidden",
-  // };
+  // const breakpointClass = `max-${mobileBreakpoint}:flex ${mobileBreakpoint}:hidden`;
 
   return (
     <nav
@@ -68,61 +79,68 @@ export const Navbar = ({
         className,
       )}
     >
-      <div className="mx-auto px-4">
+      <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">{logo}</div>
 
           {/* Desktop Navigation */}
-          <div className={`flex items-center space-x-4`}>
-            {links?.map((link) => <NavItem key={link.path} link={link} isActive={isActive(link?.path)} />)}
+          <div className="hidden items-center space-x-4 lg:flex">
+            {links.map((link) => (
+              <NavItem key={link.path} link={link} isActive={isActive(link?.path)} />
+            ))}
           </div>
 
           {/* CTA/User Area */}
           <div className="flex items-center space-x-4">
-            {user ?? cta ?? (
+            {user || cta || (
               <div className="hidden space-x-4 lg:flex">
                 <CustomButton href="/login">Sign in</CustomButton>
-                <CustomButton variant={`primary`} href="/register">
+                <CustomButton variant="primary" href="/register">
                   Sign up
                 </CustomButton>
               </div>
             )}
 
             {/* Mobile menu button */}
-            {/* <CustomButton
-              variant={`primary`}
-              size={`icon`}
-              isIconOnly
+            <CustomButton
+              variant="ghost"
+              size="icon"
               className={cn("lg:hidden")}
-              icon={isMobileMenuOpen ? <XIcon /> : <Menu />}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
-            /> */}
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </CustomButton>
           </div>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      <div
-        className={cn(
-          `${mobileBreakpoint}:hidden fixed inset-x-0 z-40 w-full origin-top transform overflow-hidden bg-white shadow-md transition-all duration-300`,
-          isMobileMenuOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0",
-        )}
-        style={{ top: sticky ? "5rem" : "4rem" }} // Adjust based on navbar height
-      >
-        <div className="space-y-1 px-2 pt-2 pb-3">
-          {links?.map((link) => <MobileNavItem key={link?.path} link={link} isActive={isActive(link?.path)} />)}
-          {!user && (
-            <>
-              <CustomButton href="/login">Sign in</CustomButton>
-              <CustomButton variant={`primary`} href="/register">
-                Sign up
-              </CustomButton>
-            </>
+      {isMobileMenuOpen && (
+        <div
+          className={cn(
+            "fixed inset-x-0 z-40 w-full bg-white shadow-md lg:hidden",
+            sticky ? "top-16 md:top-20" : "top-0",
           )}
+        >
+          <div className="space-y-2 px-4 py-3">
+            {links.map((link) => (
+              <MobileNavItem key={link.path} link={link} isActive={isActive(link?.path)} />
+            ))}
+            {!user && (
+              <div className="flex flex-col space-y-2 pt-2">
+                <CustomButton href="/login" className="w-full">
+                  Sign in
+                </CustomButton>
+                <CustomButton variant="primary" href="/register" className="w-full">
+                  Sign up
+                </CustomButton>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };
@@ -132,20 +150,16 @@ const NavItem = ({ link, isActive }: { link: NavLink; isActive: boolean }) => {
   if (link.type === "dropdown" && link.subLinks) {
     return (
       <div className="group relative">
-        <CustomButton variant={`link`}>
-          <span>{link.name}</span>
+        <CustomButton variant="ghost" className="flex items-center gap-1">
+          {link.name}
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </CustomButton>
-        <div className="ring-opacity-5 invisible absolute left-0 mt-2 w-56 origin-top-left rounded-md bg-white opacity-0 shadow-lg ring-1 ring-black transition-all duration-200 group-hover:visible group-hover:opacity-100">
+        <div className="invisible absolute left-0 mt-2 w-56 rounded-md bg-white opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:opacity-100">
           <div className="py-1">
             {link.subLinks.map((subLink) => (
-              <Link
-                key={subLink.path}
-                href={subLink.path}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              >
+              <Link key={subLink.path} href={subLink.path} className="block px-4 py-2 text-sm hover:bg-gray-100">
                 {subLink.name}
               </Link>
             ))}
@@ -156,7 +170,7 @@ const NavItem = ({ link, isActive }: { link: NavLink; isActive: boolean }) => {
   }
 
   return (
-    <CustomButton variant={`link`} href={link.path} className={cn(isActive && "bg-gray-200 font-semibold")}>
+    <CustomButton variant="ghost" href={link.path} className={cn(isActive && "bg-accent font-medium")}>
       {link.name}
     </CustomButton>
   );
@@ -171,11 +185,14 @@ const MobileNavItem = ({ link, isActive }: { link: NavLink; isActive: boolean })
       <div className="space-y-1">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100"
+          className={cn(
+            "flex w-full items-center justify-between rounded-md px-3 py-2",
+            isActive && "bg-accent font-medium",
+          )}
         >
           <span>{link.name}</span>
           <svg
-            className={`h-5 w-5 transform transition-transform ${isOpen ? "rotate-180" : ""}`}
+            className={`h-5 w-5 transition-transform ${isOpen ? "rotate-180" : ""}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -186,11 +203,7 @@ const MobileNavItem = ({ link, isActive }: { link: NavLink; isActive: boolean })
         {isOpen && (
           <div className="ml-4 space-y-1">
             {link.subLinks.map((subLink) => (
-              <Link
-                key={subLink.path}
-                href={subLink.path}
-                className="block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100"
-              >
+              <Link key={subLink.path} href={subLink.path} className="block rounded-md px-3 py-2 hover:bg-gray-100">
                 {subLink.name}
               </Link>
             ))}
@@ -203,10 +216,7 @@ const MobileNavItem = ({ link, isActive }: { link: NavLink; isActive: boolean })
   return (
     <Link
       href={link.path}
-      className={cn(
-        "block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100",
-        isActive && "bg-gray-200 font-semibold",
-      )}
+      className={cn("block rounded-md px-3 py-2 hover:bg-gray-100", isActive && "bg-accent font-medium")}
     >
       {link.name}
     </Link>
