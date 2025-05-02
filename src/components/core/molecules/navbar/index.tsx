@@ -8,16 +8,6 @@ import { useEffect, useState } from "react";
 
 import { CustomButton } from "../../atoms/button";
 
-type NavLink = {
-  name: string;
-  path: string;
-  type?: "link" | "dropdown";
-  subLinks?: Array<{
-    name: string;
-    path: string;
-  }>;
-};
-
 type NavbarProperties = {
   logo: React.ReactNode;
   links?: NavLink[];
