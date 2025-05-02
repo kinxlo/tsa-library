@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils"; // Assuming you have a utility for classnames
 
-import { Menu, XIcon } from "lucide-react";
+// import { Menu, XIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -74,7 +74,7 @@ export const Navbar = ({
           <div className="flex-shrink-0">{logo}</div>
 
           {/* Desktop Navigation */}
-          <div className={`hidden items-center space-x-4 lg:flex`}>
+          <div className={`flex items-center space-x-4`}>
             {links?.map((link) => <NavItem key={link.path} link={link} isActive={isActive(link?.path)} />)}
           </div>
 
@@ -90,7 +90,7 @@ export const Navbar = ({
             )}
 
             {/* Mobile menu button */}
-            <CustomButton
+            {/* <CustomButton
               variant={`primary`}
               size={`icon`}
               isIconOnly
@@ -98,7 +98,7 @@ export const Navbar = ({
               icon={isMobileMenuOpen ? <XIcon /> : <Menu />}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
-            />
+            /> */}
           </div>
         </div>
       </div>
