@@ -57,10 +57,7 @@ declare global {
     validate?: (value: string) => boolean;
   }
 
-  export type NavLink = {
-    dropdown: any;
-    route: ReactNode;
-    link: string;
+  interface NavLink {
     id: number;
     name: string;
     path: string;
@@ -71,7 +68,18 @@ declare global {
       path: string;
       type: string;
     }[];
-  };
+  }
+
+  interface NavbarProperties {
+    logo: React.ReactNode;
+    links: any;
+    cta?: React.ReactNode;
+    user?: React.ReactNode;
+    className?: string;
+    theme?: "light" | "dark" | "custom";
+    sticky?: boolean;
+    mobileBreakpoint?: "sm" | "md" | "lg" | "xl";
+  }
 
   interface NavbarProperties {
     logo: React.ReactNode;

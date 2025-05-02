@@ -1,98 +1,72 @@
 import { Navbar } from ".";
-import { Meta, StoryFn } from "@storybook/react";
+import { NAV_LINKS } from "@/lib/constants";
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { CustomButton } from "../../atoms/button";
+import { Logo } from "../../atoms/logo";
 
 const meta: Meta<typeof Navbar> = {
-  title: "Molecules/tsa-navbar",
+  title: "Molecules/Navbar",
   component: Navbar,
+  parameters: {
+    layout: "fullscreen",
+  },
+  tags: ["autodocs"],
+  argTypes: {
+    theme: {
+      control: { type: "select" },
+      options: ["light", "dark", "custom"],
+    },
+    mobileBreakpoint: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "xl"],
+    },
+    sticky: {
+      control: { type: "boolean" },
+    },
+  },
 };
+
 export default meta;
+type Story = StoryObj<typeof Navbar>;
 
-const Template: StoryFn<typeof Navbar> = (arguments_: TsaNavbarProperties) => <Navbar {...arguments_} />;
+const UserProfile = () => (
+  <div className="flex items-center space-x-2">
+    <div className="h-8 w-8 rounded-full bg-gray-300"></div>
+    <span className="text-sm">John Doe</span>
+  </div>
+);
 
-export const Default = Template.bind({});
-Default.args = {
-  navLinks: [
-    {
-      route: "LINK 1",
-      link: "/",
-      dropdown: undefined,
-      id: 0,
-      name: "",
-      path: "",
-      type: "",
-    },
-    {
-      route: "LINK 2",
-      link: "/",
-      dropdown: undefined,
-      id: 0,
-      name: "",
-      path: "",
-      type: "",
-    },
-    {
-      route: "LINK 3",
-      link: "/",
-      dropdown: undefined,
-      id: 0,
-      name: "",
-      path: "",
-      type: "",
-    },
-    {
-      route: "LINK 4",
-      link: "/",
-      dropdown: undefined,
-      id: 0,
-      name: "",
-      path: "",
-      type: "",
-    },
-    {
-      route: "LINK 5",
-      link: "/",
-      dropdown: undefined,
-      id: 0,
-      name: "",
-      path: "",
-      type: "",
-    },
-  ],
-  children: (
-    <>
-      <CustomButton href="/signin" variant="primary" className="h-[47px] w-[97px] rounded-lg">
-        CTA 1
-      </CustomButton>
-      <CustomButton href="/signup" variant="outline" className="h-[47px] w-[97px] rounded-lg">
-        CTA 2
-      </CustomButton>
-    </>
-  ),
+export const Default: Story = {
+  args: {
+    logo: <Logo logo={"/images/logo-black.png"} />,
+    links: NAV_LINKS,
+    theme: "light",
+    sticky: true,
+  },
 };
 
-export const CustomCTA = Template.bind({});
-CustomCTA.args = {
-  ...Default.args,
-  logoPath: "/images/logo-black.png",
-  className: "bg-accent",
-  linkClassName: "text-black",
+export const DarkTheme: Story = {
+  args: {
+    ...Default.args,
+    logo: <Logo logo={"/images/logo-white.png"} />,
+    theme: "dark",
+  },
 };
 
-export const CustomCTA_2 = Template.bind({});
-CustomCTA_2.args = {
-  ...Default.args,
-  logoPath: "/images/logo-white.png",
-  className: "bg-primary",
-  linkClassName: "text-white",
+export const WithUser: Story = {
+  args: {
+    ...Default.args,
+    user: <UserProfile />,
+  },
 };
 
-export const CustomCTA_2_with_banner = Template.bind({});
-CustomCTA_2_with_banner.args = {
-  ...Default.args,
-  logoPath: "/images/logo-white.png",
-  className: "bg-primary",
-  linkClassName: "text-white",
-  showBanner: true,
+export const WithCustomCTA: Story = {
+  args: {
+    ...Default.args,
+    cta: (
+      <button className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700">
+        Custom CTA
+      </button>
+    ),
+  },
 };
