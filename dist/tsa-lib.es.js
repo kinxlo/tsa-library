@@ -14414,5 +14414,5 @@ export {
   bb as InputField,
   La as ListItem,
   Eg as Logo,
-  xb as TsaNavbar
+  xb as Navbar
 };

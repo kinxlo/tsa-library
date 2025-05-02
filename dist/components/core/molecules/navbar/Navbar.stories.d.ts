@@ -1,6 +1,6 @@
-import { TsaNavbar } from '.';
+import { Navbar } from '.';
 import { Meta } from '@storybook/react';
-declare const meta: Meta<typeof TsaNavbar>;
+declare const meta: Meta<typeof Navbar>;
 export default meta;
 export declare const Default: import('@storybook/core/csf').AnnotatedStoryFn<import('@storybook/react/*').ReactRenderer, TsaNavbarProperties>;
 export declare const CustomCTA: import('@storybook/core/csf').AnnotatedStoryFn<import('@storybook/react/*').ReactRenderer, TsaNavbarProperties>;
