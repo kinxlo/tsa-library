@@ -1,15 +1,15 @@
-import { TsaNavbar } from ".";
+import { Navbar } from ".";
 import { Meta, StoryFn } from "@storybook/react";
 
 import { CustomButton } from "../../atoms/button";
 
-const meta: Meta<typeof TsaNavbar> = {
+const meta: Meta<typeof Navbar> = {
   title: "Molecules/tsa-navbar",
-  component: TsaNavbar,
+  component: Navbar,
 };
 export default meta;
 
-const Template: StoryFn<typeof TsaNavbar> = (arguments_: TsaNavbarProperties) => <TsaNavbar {...arguments_} />;
+const Template: StoryFn<typeof Navbar> = (arguments_: TsaNavbarProperties) => <Navbar {...arguments_} />;
 
 export const Default = Template.bind({});
 Default.args = {

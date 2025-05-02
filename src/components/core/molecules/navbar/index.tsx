@@ -232,7 +232,7 @@ import { CustomButton } from "../../atoms/button";
 import { Logo } from "../../atoms/logo";
 import { MobileNavbar } from "./mobile-nav";
 
-export const TsaNavbar: FC<TsaNavbarProperties> = ({
+export const Navbar: FC<TsaNavbarProperties> = ({
   logoPath = "",
   navLinks,
   children,
