@@ -1,3 +1,1 @@
-import { FC } from 'react';
-export declare const Navbar: FC<TsaNavbarProperties>;
-export declare const ListItem: import('react').ForwardRefExoticComponent<Omit<import('react').DetailedHTMLProps<import('react').AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, "ref"> & import('react').RefAttributes<HTMLAnchorElement>>;
+export declare const Navbar: ({ logo, links, cta, user, className, theme, sticky, }: NavbarProperties) => import("react/jsx-runtime").JSX.Element;
