@@ -7,3 +7,4 @@ export * from "./components/core/atoms/logo";
 
 // MOLECULES
 export * from "./components/core/molecules/navbar";
+export * from "./components/core/molecules/breadcrumb";

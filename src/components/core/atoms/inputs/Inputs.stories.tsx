@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Home } from "lucide-react";
 import { FormProvider, useForm } from "react-hook-form";
 
-import { CustomButton } from "../button";
+import { TSAButton } from "../button";
 
 const meta: Meta<typeof InputField> = {
   title: "Atoms/InputField",
@@ -22,9 +22,9 @@ const MockForm = ({ children, onSubmit }: { children: React.ReactNode; onSubmit?
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit || (() => {}))}>
         {children}
-        <CustomButton type="submit" size={`sm`} variant={`primary`} className={`mt-2`}>
+        <TSAButton type="submit" size={`sm`} variant={`primary`} className={`mt-2`}>
           Submit
-        </CustomButton>
+        </TSAButton>
       </form>
     </FormProvider>
   );

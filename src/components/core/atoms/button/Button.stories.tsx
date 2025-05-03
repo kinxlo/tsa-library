@@ -1,10 +1,10 @@
-import { CustomButton } from ".";
+import { TSAButton } from ".";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Home } from "lucide-react";
 
-const meta: Meta<typeof CustomButton> = {
+const meta: Meta<typeof TSAButton> = {
   title: "Atoms/Button",
-  component: CustomButton,
+  component: TSAButton,
   argTypes: {
     variant: {
       control: {
@@ -23,7 +23,7 @@ const meta: Meta<typeof CustomButton> = {
 
 export default meta;
 
-type Story = StoryObj<typeof CustomButton>;
+type Story = StoryObj<typeof TSAButton>;
 
 export const Primary: Story = {
   args: {

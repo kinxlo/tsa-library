@@ -29,7 +29,7 @@ function NavigationMenuList({ className, ...properties }: React.ComponentProps<t
   return (
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
-      className={cn("group flex flex-1 list-none items-center justify-center gap-1", className)}
+      className={cn("group flex list-none items-center justify-center gap-1", className)}
       {...properties}
     />
   );

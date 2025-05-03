@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEventHandler, FocusEventHandler, HtmlHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 
 declare global {
@@ -26,8 +25,8 @@ declare global {
 
   interface ButtonProperties {
     type?: "submit" | "button" | "reset";
-    variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"; // Add your actual variants
-    size?: "default" | "sm" | "lg" | "icon"; // Add your actual sizes
+    variant?: Variant;
+    size?: Size;
     icon?: ReactNode;
     children?: ReactNode;
     isLoading?: boolean;
@@ -59,31 +58,20 @@ declare global {
 
   interface NavLink {
     id: number;
-    name: string;
-    path: string;
-    type: string;
-    subLinks?: {
+    title: string;
+    href: string;
+    type: "link" | "dropdown";
+    subLinks?: Array<{
       id: number;
-      name: string;
-      path: string;
-      type: string;
-    }[];
+      title: string;
+      href: string;
+      description: string;
+    }> | null;
   }
 
   interface NavbarProperties {
-    logo: React.ReactNode;
-    links: any;
-    cta?: React.ReactNode;
-    user?: React.ReactNode;
-    className?: string;
-    theme?: "light" | "dark" | "custom";
-    sticky?: boolean;
-    mobileBreakpoint?: "sm" | "md" | "lg" | "xl";
-  }
-
-  interface NavbarProperties {
-    logo: React.ReactNode;
-    links: NavLink[];
+    logo?: React.ReactNode;
+    links?: NavLink[];
     cta?: React.ReactNode;
     user?: React.ReactNode;
     className?: string;
@@ -104,12 +92,6 @@ declare global {
     href: string;
     description: string;
   };
-
-  interface NavLink {
-    route: string;
-    link: string;
-    dropdown?: DropdownItem[];
-  }
 
   interface MarqueeProps extends HtmlHTMLAttributes<HTMLDivElement> {
     children: ReactNode;
@@ -151,17 +133,6 @@ declare global {
     leftAddon?: React.ReactNode; // Add left icon or button
     rightAddon?: React.ReactNode; // Add right icon or button
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  }
-
-  interface TsaNavbarProperties {
-    navLinks: NavLink[];
-    logoPath: string;
-    children?: ReactNode;
-    bgScrollColor?: string;
-    linkClassName?: string;
-    className?: string;
-    showBanner?: boolean;
-    bannerDuration?: string;
   }
 }
 

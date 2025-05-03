@@ -12,14 +12,6 @@ const meta: Meta<typeof Navbar> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    theme: {
-      control: { type: "select" },
-      options: ["light", "dark", "custom"],
-    },
-    mobileBreakpoint: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg", "xl"],
-    },
     sticky: {
       control: { type: "boolean" },
     },
@@ -40,16 +32,7 @@ export const Default: Story = {
   args: {
     logo: <Logo logo={"/images/logo-black.png"} />,
     links: NAV_LINKS,
-    theme: "light",
     sticky: true,
-  },
-};
-
-export const DarkTheme: Story = {
-  args: {
-    ...Default.args,
-    logo: <Logo logo={"/images/logo-white.png"} />,
-    theme: "dark",
   },
 };
 

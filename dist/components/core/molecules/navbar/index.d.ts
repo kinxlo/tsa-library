@@ -1,1 +1,1 @@
-export declare const Navbar: ({ logo, links, cta, user, className, theme, sticky, }: NavbarProperties) => import("react/jsx-runtime").JSX.Element;
+export declare const Navbar: import('react').ForwardRefExoticComponent<NavbarProperties & import('react').RefAttributes<HTMLElement>>;
