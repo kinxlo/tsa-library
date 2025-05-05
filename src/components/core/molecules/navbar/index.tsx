@@ -6,25 +6,26 @@ import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { forwardRef, useEffect, useState } from "react";
 
-import { TSAButton } from "../../atoms/button";
+import Button from "../../atoms/button";
 import { Logo } from "../../atoms/logo";
+import { Wrapper } from "../../atoms/wrapper";
 import { NavItems } from "./nav-menu-item";
 
 export const Navbar = forwardRef<HTMLElement, NavbarProperties>(
   (
-    { logo = <Logo logo="/images/logo-black.png" />, links = NAV_LINKS, cta, user, className, sticky = true },
+    {
+      logo = <Logo logo="/images/logo-black.png" />,
+      links = NAV_LINKS,
+      cta,
+      user,
+      className,
+      navbarStyle,
+      sticky = true,
+    },
     reference,
   ) => {
     const pathname = usePathname();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    useEffect(() => {
-      if (!sticky) return;
-      const handleScroll = () => setIsScrolled(window.scrollY > 10);
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, [sticky]);
 
     useEffect(() => {
       setIsMobileMenuOpen(false);
@@ -33,41 +34,36 @@ export const Navbar = forwardRef<HTMLElement, NavbarProperties>(
     return (
       <nav
         ref={reference}
-        className={cn(
-          "w-full transition-all duration-300",
-          sticky && "sticky top-0 z-50",
-          isScrolled && "shadow-sm",
-          className,
-        )}
+        className={cn("w-full transition-all duration-300", sticky && "fixed top-0 z-50", navbarStyle)}
       >
-        <div className="container mx-auto px-4">
-          <div className="flex h-16 items-center justify-between md:h-20">
+        <Wrapper className={`p-0`}>
+          <div className={cn("flex h-16 items-center justify-between md:h-24", className)}>
             <div className="flex-shrink-0">{logo}</div>
-
             <NavItems links={links} className={`hidden lg:block`} />
+            <div className="flex items-center gap-4">
+              <div className="hidden gap-4 lg:flex">
+                {user || cta || (
+                  <>
+                    <Button href="/login">Sign in</Button>
+                    <Button variant="accent" href="/register">
+                      Sign up
+                    </Button>
+                  </>
+                )}
+              </div>
 
-            <div className="flex items-center space-x-4">
-              {user || cta || (
-                <div className="hidden space-x-4 lg:flex">
-                  <TSAButton href="/login">Sign in</TSAButton>
-                  <TSAButton variant="primary" href="/register">
-                    Sign up
-                  </TSAButton>
-                </div>
-              )}
-
-              <TSAButton
+              <Button
                 variant="ghost"
                 size="icon"
+                isIconOnly
+                icon={isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 className="lg:hidden"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label="Toggle menu"
-              >
-                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </TSAButton>
+              />
             </div>
           </div>
-        </div>
+        </Wrapper>
 
         {isMobileMenuOpen && (
           <div
@@ -78,16 +74,16 @@ export const Navbar = forwardRef<HTMLElement, NavbarProperties>(
           >
             <div className="space-y-2 px-4 py-3">
               <NavItems links={links} isMobile />
-              {!user && (
-                <div className="flex flex-col space-y-2 pt-2">
-                  <TSAButton href="/login" className="w-full">
-                    Sign in
-                  </TSAButton>
-                  <TSAButton variant="primary" href="/register" className="w-full">
-                    Sign up
-                  </TSAButton>
-                </div>
-              )}
+              <div className="flex flex-col space-y-2 pt-2">
+                {user || cta || (
+                  <>
+                    <Button href="/login">Sign in</Button>
+                    <Button variant="accent" href="/register">
+                      Sign up
+                    </Button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         )}

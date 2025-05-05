@@ -4,4 +4,5 @@
  * @param {ButtonProps} props - Properties to configure the button.
  * @returns {JSX.Element} The rendered button component.
  */
-export declare const TSAButton: import('react').ForwardRefExoticComponent<ButtonProperties & import('react').RefAttributes<HTMLButtonElement>>;
+declare const Button: import('react').ForwardRefExoticComponent<ButtonProperties & import('react').RefAttributes<HTMLButtonElement>>;
+export default Button;

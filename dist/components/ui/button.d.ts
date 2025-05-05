@@ -1,7 +1,7 @@
 import { VariantProps } from 'class-variance-authority';
 import { ButtonHTMLAttributes } from 'react';
 declare const buttonVariants: (props?: ({
-    variant?: "default" | "primary" | "destructive" | "subtle" | "loading" | "outline" | "secondary" | "ghost" | "link" | null | undefined;
+    variant?: "default" | "primary" | "accent" | "destructive" | "subtle" | "loading" | "outline" | "secondary" | "ghost" | "link" | null | undefined;
     size?: "default" | "link" | "sm" | "lg" | "xl" | "icon" | "circle" | null | undefined;
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
 export interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {

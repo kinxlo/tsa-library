@@ -2,6 +2,7 @@ import { Navbar } from ".";
 import { NAV_LINKS } from "@/lib/constants";
 import type { Meta, StoryObj } from "@storybook/react";
 
+import Button from "../../atoms/button";
 import { Logo } from "../../atoms/logo";
 
 const meta: Meta<typeof Navbar> = {
@@ -10,7 +11,6 @@ const meta: Meta<typeof Navbar> = {
   parameters: {
     layout: "fullscreen",
   },
-  tags: ["autodocs"],
   argTypes: {
     sticky: {
       control: { type: "boolean" },
@@ -33,6 +33,7 @@ export const Default: Story = {
     logo: <Logo logo={"/images/logo-black.png"} />,
     links: NAV_LINKS,
     sticky: true,
+    cta: <Button>Register</Button>,
   },
 };
 
@@ -40,16 +41,5 @@ export const WithUser: Story = {
   args: {
     ...Default.args,
     user: <UserProfile />,
-  },
-};
-
-export const WithCustomCTA: Story = {
-  args: {
-    ...Default.args,
-    cta: (
-      <button className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700">
-        Custom CTA
-      </button>
-    ),
   },
 };

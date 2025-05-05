@@ -1,6 +1,4 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
+import { Button as ButtonComp } from "@/components/ui/button";
 import { LucideLoader, LucidePlus } from "lucide-react";
 import Link from "next/link";
 import { cloneElement, forwardRef, ReactElement } from "react";
@@ -11,12 +9,12 @@ import { cloneElement, forwardRef, ReactElement } from "react";
  * @param {ButtonProps} props - Properties to configure the button.
  * @returns {JSX.Element} The rendered button component.
  */
-export const TSAButton = forwardRef<HTMLButtonElement, ButtonProperties>(
+const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
   (
     {
       type = "button",
       variant,
-      size,
+      size = "xl",
       children,
       isLoading = false,
       isLeftIconVisible = false,
@@ -28,7 +26,6 @@ export const TSAButton = forwardRef<HTMLButtonElement, ButtonProperties>(
       href,
       className,
       onClick,
-      ...properties
     },
     reference,
   ) => {
@@ -65,7 +62,7 @@ export const TSAButton = forwardRef<HTMLButtonElement, ButtonProperties>(
       if (isExternal) {
         return (
           <a href={href} target="_blank" rel="noopener noreferrer" aria-label={ariaLabel}>
-            <Button
+            <ButtonComp
               type={type}
               variant={variant}
               size={size}
@@ -75,17 +72,16 @@ export const TSAButton = forwardRef<HTMLButtonElement, ButtonProperties>(
               onClick={onClick}
               role="button"
               ref={reference}
-              {...properties}
             >
               {buttonContent}
-            </Button>
+            </ButtonComp>
           </a>
         );
       }
 
       return (
         <Link href={isDisabled ? "" : href} passHref aria-label={ariaLabel}>
-          <Button
+          <ButtonComp
             variant={variant}
             size={size}
             disabled={isDisabled}
@@ -94,16 +90,15 @@ export const TSAButton = forwardRef<HTMLButtonElement, ButtonProperties>(
             onClick={onClick}
             role="button"
             ref={reference}
-            {...properties}
           >
             {buttonContent}
-          </Button>
+          </ButtonComp>
         </Link>
       );
     }
 
     return (
-      <Button
+      <ButtonComp
         variant={variant}
         size={size}
         disabled={isDisabled}
@@ -112,12 +107,12 @@ export const TSAButton = forwardRef<HTMLButtonElement, ButtonProperties>(
         onClick={onClick}
         role="button"
         ref={reference}
-        {...properties}
       >
         {buttonContent}
-      </Button>
+      </ButtonComp>
     );
   },
 );
+Button.displayName = "CustomButton"; // This is useful for debugging in React DevTools
 
-TSAButton.displayName = "TSAButton";
+export default Button;

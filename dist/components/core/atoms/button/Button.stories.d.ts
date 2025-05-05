@@ -1,8 +1,8 @@
-import { TSAButton } from '.';
+import { default as Button } from '.';
 import { Meta, StoryObj } from '@storybook/react';
-declare const meta: Meta<typeof TSAButton>;
+declare const meta: Meta<typeof Button>;
 export default meta;
-type Story = StoryObj<typeof TSAButton>;
+type Story = StoryObj<typeof Button>;
 export declare const Primary: Story;
 export declare const WithIcon: Story;
 export declare const IconOnly: Story;
