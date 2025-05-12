@@ -47,6 +47,7 @@ export const IconOnly: Story = {
     icon: <Home />,
     isIconOnly: true,
     ariaLabel: "Home",
+    size: "icon",
   },
 };
 
