@@ -4,14 +4,13 @@
 
 ## Overview
 
-This repository contains the **[Techstudio Academy](https://techstudioacademy.com)** official webapp, designed as a foundational framework for the organization’s educational programs.
+This repository contains the **[Techstudio Academy](https://techstudioacademy.com)** official component library, designed as a foundational framework for the organization’s educational programs.
 
 ## Technology Stack
 
 - [Next.js](https://nextjs.org/) >= 14.0.0
-- [Tailwind](https://tailwindcss.com/) >= 3.4.0
+- [Tailwind](https://tailwindcss.com/) >= 4.0.0
 - [ShadCN](https://ui.shadcn.com/) latest (UI)
-- [PHP](https://php.net/) latest (server)
 
 ## Getting Started
 
@@ -39,6 +38,4 @@ Please see [CONTRIBUTING](./CONTRIBUTING.md)
 
 Written by:
 
-- [Kingsley Ifijeh Solomon](https://github.com/kinxlo) (Lead)
-- [Olanitori Tobi](https://github.com/intuneteq) (Backend)
-- [Kore Daniel](https://github.com/koredeploy) (Frontend)
+- [Kingsley Ifijeh Solomon](https://github.com/kinxlo)
